@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Geist, JetBrains_Mono } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import { cn } from "@/lib/utils";
+import "./globals.css";
+
+const fontSans = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const fontMono = JetBrains_Mono({ variable: "--font-mono" });
 
 export const metadata: Metadata = {
   title: {
@@ -18,8 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={cn("font-sans", geist.variable)}>
-      <body>{children}</body>
+    <html
+      lang="es"
+      className={cn(fontSans.variable, fontMono.variable, "font-sans")}
+    >
+      <body>
+        {children}
+        <Toaster position="top-right" />
+      </body>
     </html>
   );
 }
