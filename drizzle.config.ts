@@ -7,5 +7,5 @@ export default {
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },
-  schema: ["lib/auth-schema.ts"],
+  schema: ["lib/auth-schema.ts", "lib/domain-schema.ts"],
 } satisfies Config;

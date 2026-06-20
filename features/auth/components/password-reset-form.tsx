@@ -35,7 +35,7 @@ export default function PasswordResetForm() {
 
   const onSubmit = handleSubmit(async (values) => {
     if (!token) {
-      toast.error("El enlace de recuperación es inválido o se venció");
+      toast.error("El enlace de recuperación es inválido");
       return;
     }
 
@@ -75,7 +75,7 @@ export default function PasswordResetForm() {
           </Fragment>
         ) : (
           <p className="text-destructive text-sm">
-            El enlace de recuperación es inválido o se venció
+            El enlace de recuperación es inválido
           </p>
         )}
 

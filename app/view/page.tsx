@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import { validate } from "uuid";
 
 import { sanitizeSearchParam } from "@/lib/utils";
 import { findMenuById } from "@/server/menus";
@@ -11,6 +12,7 @@ type PageProps = {
 async function getMenu({ searchParams }: PageProps) {
   const query = await searchParams;
   const menuId = sanitizeSearchParam(query.menu);
+  if (!validate(menuId)) notFound();
   if (!menuId) redirect("/");
   const menu = await findMenuById(menuId);
   if (!menu) notFound();
